@@ -1,0 +1,94 @@
+<!-- /*1. Reverse String. 
+The problem is to create a program that uses the setTimeout() function to reverse a given string after a delay of 2
+seconds.The program should use a variable “input” storing a string as input and then implement a delay of 2 seconds
+before reversing the string.The reversed string should then be printed as output.*/
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse String</title>
+    <style>
+        body {
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #operation {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #inputStr {
+            height: 50px;
+            width: 700px;
+            font-size: 25px;
+            border: 3px solid rgb(108, 108, 249);
+        }
+
+        #result {
+            color: grey;
+            font-size: 20px;
+        }
+
+        #btn {
+            border: 3px solid rgb(108, 108, 249);
+            /* padding: 5px 15px 5px 15px; */
+            height: 35px;
+            width: 120px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="operation">
+        <input type="text" name="str" id="inputStr" placeholder="Enter String to Reverse........">
+        <button id="btn" onclick="reverseMyStr()">Reverse it</button>
+        <p id="result">Note : Result will be displayed in 2 seconds.....</p>
+    </div>
+
+
+    <script>
+        let getInput = document.getElementById("inputStr");
+        let showResult = document.getElementById("result");
+        function reverse() {
+            let input = getInput.value;
+            let reversedStr = "";
+            for (let i = input.length; i >= 0; i--) {
+                reversedStr += input[i];
+            }
+            // let newStr = str.substr(9);
+            let result = reversedStr.substring(9);
+            // console.log("\n",reversedStr);
+            showResult.textContent = "Reversed String Is : " + result;
+            showResult.style.color = "lightgreen"
+        }
+        function reverseMyStr() {
+            setTimeout(() => {
+                reverse();
+            }, 2000);
+          changePara();
+        }
+      function changePara() {
+            setTimeout(() => {
+                result.textContent = "Result will be displayed in 2 seconds.....";
+                result.style.color = "grey";
+            }, 10000);
+        }
+    </script>
+</body>
+
+</html>

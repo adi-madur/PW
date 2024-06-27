@@ -1,0 +1,79 @@
+<!-- 2. Random Number Generator with Delay and Progress Indication:
+The goal of this program is to generate a random number after a delay of 3 seconds, and store the delay in a variable so can be modified. The program displays a message every second indicating the time remaining until the random number is generated and then outputs the generated number. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Number Generator</title>
+    <style>
+      body {
+        background-color: #000000;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #generateNumber {
+        height: 50px;
+        /* width: 100px; */
+      }
+
+      #reminder {
+        color: grey;
+      }
+
+      #result {
+        font-size: 45px;
+        color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p id="result">Press The Button</p>
+    <button id="generateNumber" onclick="changeReminder()">
+      Tap To Generate a Number
+    </button>
+    <p id="reminder">Result will be displayed in 3 seconds</p>
+
+    <script>
+      /*
+          Call A function to trigger timer  onclick="generateRandomNum()
+            ---------- > It will change paragraph text.
+          Call another function after 3 seconds
+            ---------- > It will clear paragraph
+          Call a function to show results
+            ---------- > 
+        */
+
+      let reminder = document.getElementById("reminder");
+      let body = document.querySelector("body");
+      let result = document.getElementById("result");
+
+      function changeReminder() {
+        setTimeout(() => {
+          reminder.textContent = "Result will be displayed in 2 seconds";
+          setTimeout(() => {
+            reminder.textContent = "Result will be displayed in 1 seconds";
+            setTimeout(() => {
+              reminder.textContent =
+                "Press again to generate Random Number in 3 seconds";
+              generateRandomNum();
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      }
+      function generateRandomNum() {
+        let randomNum = 100 * Math.random();
+        result.textContent = randomNum.toFixed(3);
+      }
+
+      // showResult();
+    </script>
+  </body>
+</html>

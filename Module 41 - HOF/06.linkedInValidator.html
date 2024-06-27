@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinedIn Link Validator</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: #020624;
+        }
+
+        #getData {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background-color: #020624;
+            color: white;
+        }
+
+        #getLink {
+            height: 50px;
+            width: 500px;
+            padding: 5px;
+            font-size: 30px;
+            border: 3px solid grey;
+            border-radius: 20px;
+            background-color: #020624;
+            color: white;
+            border: 3px solid rgb(64, 0, 255);
+        }
+
+        #checkBtn {
+            height: 40px;
+            width: 150px;
+
+            font-size: 25px;
+            border: 3px solid rgb(64, 0, 255);
+            border-radius: 20px;
+            background-color: #020624;
+            color: white;
+        }
+
+        #result {
+            font-size: 25px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="getData">
+        <!-- InputBox to get Link -->
+        <input type="text" name="link" id="getLink" placeholder="Paste your LinkedIn link here.........">
+        <!-- Button to submit the link and to trigger the function -->
+        <button id="checkBtn" onclick="checkLink()">Check It </button>
+        <!-- Paragraph to show result -->
+        <p id="result">Paste Your Link In Input Box</p>
+    </div>
+
+    <script>
+        let link = document.getElementById("getLink");
+        let button = document.getElementById("checkBtn");
+        let result = document.getElementById("result");
+        // Regular expression to check validity
+        let regExLink = /[(https:\/\/www\.linkedin.com)]{20}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)+/gi;
+        // fuction to check validity
+        function checkLink() {
+            if (regExLink.test(link.value) == true) {
+                result.textContent = "Link Is Valid";
+                result.style.color = "green";
+                changePara();
+            }
+            else {
+                result.textContent = "Link Is Invalid";
+                result.style.color = "red";
+                changePara();
+            }
+        }
+        function changePara() {
+            setTimeout(() => {
+                result.textContent = "Paste Another Link In Input Box";
+                result.style.color = "white";
+            }, 5000);
+        }
+    </script>
+</body>
+
+</html>
